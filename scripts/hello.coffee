@@ -3,15 +3,17 @@ execCommand = (res, command, callback) ->
 	@exec command, (error, stdout, stderr) ->
 		if callback
 			callback()
-		res.send "Executting #{command}..."
+
 		if error
 			res.send error
 
-		# if stdout
-		# 	res.send stdout
+		if stdout
+			res.send stdout
 
 		if stderr
 			res.send stderr	
+
+		res.send "Executting #{command} Done!"
 
 module.exports = (robot) -> 
 	robot.respond /deploy project (.*) at branch (.*)/i, (res) ->
