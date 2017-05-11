@@ -8,15 +8,11 @@ module.exports = (robot) ->
 
 		res.send "Deploying #{project} at #{branch}..."
 
-		hostname = msg.match[1]
 		@exec = require('child_process').exec
 		
-		command = "host #{hostname}"
-
-		msg.send "Looking up #{hostname}..."
-		msg.send "This is the command #{command}."
+		command = "ls -a"
 
 		@exec command, (error, stdout, stderr) ->
-			msg.send error
-			msg.send stdout
-			msg.send stderr
+			res.send error
+			res.send stdout
+			res.send stderr
