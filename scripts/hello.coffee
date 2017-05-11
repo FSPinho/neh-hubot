@@ -1,6 +1,8 @@
 execCommand = (res, command, callback) ->
 	@exec = require('child_process').exec
 	@exec command, (error, stdout, stderr) ->
+		if callback
+			callback()
 		res.send "Executting #{command}..."
 		if error
 			res.send error
@@ -10,9 +12,6 @@ execCommand = (res, command, callback) ->
 
 		if stderr
 			res.send stderr	
-
-		if callback
-			callback()
 
 module.exports = (robot) -> 
 	robot.respond /deploy project (.*) at branch (.*)/i, (res) ->
