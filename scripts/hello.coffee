@@ -28,7 +28,8 @@ module.exports = (robot) ->
 			execCommand res, "cd ~/izotx-next-exit-history", () -> 
 				execCommand res, "git checkout #{branch}", () -> 
 					execCommand res, "git pull", () -> 
-						res.send "Deploy of #{project} at #{branch} is done!"
+						execCommand res, "source venvs/bin/activate", () -> 
+							res.send "Deploy of #{project} at #{branch} is done!"
 
 
 		else
