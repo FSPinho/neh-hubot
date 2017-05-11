@@ -6,7 +6,7 @@ module.exports = (robot) ->
 		project = res.match[1] 
 		branch = res.match[1] 
 
-		if(project === 'nextexithistory') {
+		if project is 'nextexithistory'
 			res.send "Deploying #{project} at #{branch}..."
 			
 			@exec = require('child_process').exec
@@ -49,6 +49,6 @@ module.exports = (robot) ->
 						res.send "Deploy of #{project} at #{branch} is done!"
 
 
-		} else {
+		else
 			res.send "The project #{project} is not configured!"
-		}
+		
