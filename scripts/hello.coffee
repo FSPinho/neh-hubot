@@ -1,4 +1,5 @@
 execCommand = (res, command, callback) ->
+	res.send "Executting #{command}..."
 	@exec = require('child_process').exec
 	@exec command, (error, stdout, stderr) ->
 		if(error != null)
