@@ -24,8 +24,8 @@ module.exports = (robot) ->
 		if project is 'nextexithistory'
 			res.send "Deploying #{project} at #{branch}..."
 			
-			execCommand res, "ls -a", () -> 
-				res.send "Deploy of #{project} at #{branch} is done!"
+			execCommand res, "ls -a", (anything) -> 
+				res.send "Deploy of #{project} at #{branch} is done! #{anything}"
 
 
 		else
