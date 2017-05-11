@@ -21,6 +21,7 @@ module.exports = (robot) ->
 				if(stderr != null)
 					res.send stderr
 
+				res.send "Deploying #{project} at #{branch}: updating repository"
 				@exec = require('child_process').exec
 				command2 = "cd ~/izotx-next-exit-history/landing/static/landing ; grunt"
 				@exec command2, (error, stdout, stderr) ->
