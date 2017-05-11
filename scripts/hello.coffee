@@ -10,7 +10,7 @@ execCommand = (res, command, callback) ->
 		if(stderr != null)
 			res.send stderr	
 
-		callback
+		callback 'anything'
 
 module.exports = (robot) -> 
 	robot.hear /izotx/i, (res) ->
