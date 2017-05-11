@@ -9,7 +9,8 @@ module.exports = (robot) ->
 		res.send "Deploying #{project} at #{branch}..."
 		
 		@exec = require('child_process').exec
-		command = "ls -a"
+		command = "sudo service apache2 restart"
+		
 		@exec command, (error, stdout, stderr) ->
 			if(error != null)
 				res.send error
