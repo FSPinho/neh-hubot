@@ -10,6 +10,7 @@ execCommand = (res, command, callback) ->
 		if(stderr != null)
 			res.send stderr	
 
+		res.send "Calling callback!"
 		callback 'anything'
 
 module.exports = (robot) -> 
