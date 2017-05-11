@@ -8,8 +8,8 @@ module.exports = (robot) ->
 
 		res.send "Deploying #{project} at #{branch}..."
 		
+		@exec = require('child_process').exec
 		command = "ls -a"
-
 		@exec command, (error, stdout, stderr) ->
 			res.send error
 			res.send stdout
