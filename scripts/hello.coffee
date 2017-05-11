@@ -11,6 +11,11 @@ module.exports = (robot) ->
 		@exec = require('child_process').exec
 		command = "ls -a"
 		@exec command, (error, stdout, stderr) ->
-			res.send error
-			res.send stdout
-			res.send stderr
+			if(error != null)
+				res.send error
+
+			if(stdout != null)
+				res.send stdout
+
+			if(stderr != null)
+				res.send stderr
