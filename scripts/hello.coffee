@@ -19,7 +19,7 @@ izotx = (res, anything) ->
 
 module.exports = (robot) -> 
 	robot.hear /izotx/i, (res) ->
-	    izotx "Felipe"
+	    izotx res, "Felipe"
 
 	robot.respond /deploy project (.*) at branch (.*)/i, (res) ->
 		project = res.match[1] 
