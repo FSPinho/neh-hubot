@@ -7,8 +7,8 @@ execCommand = (res, command, callback) ->
 		if error
 			res.send error
 
-		if stdout
-			res.send stdout
+		# if stdout
+		# 	res.send stdout
 
 		if stderr
 			res.send stderr	
