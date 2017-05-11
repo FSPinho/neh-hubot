@@ -23,15 +23,8 @@ module.exports = (robot) ->
 		if project is 'nextexithistory'
 			res.send "Deploying #{project} at #{branch}..."
 			
-			execCommand res, "cd ~/izotx-next-exit-history", () -> 
-				execCommand res, "git checkout #{branch}", () -> 
-					execCommand res, "git pull", () -> 
-						execCommand res, "source venvs/bin/activate", () -> 
-							execCommand res, "python manage.py collectstatic", () -> 
-								execCommand res, "cd landing/static/landing", () -> 
-									execCommand res, "grunt", () -> 
-										execCommand res, "sudo service apache2 restart", () -> 
-											res.send "Deploy of #{project} at #{branch} is done!"
+			execCommand res, "ls -a", () -> 
+				res.send "Deploy of #{project} at #{branch} is done!"
 
 
 		else
