@@ -22,6 +22,7 @@ module.exports = (robot) ->
 			res.send "Deploying #{project} at #{branch}..."
 			
 			execCommand res, "cd ~/izotx-next-exit-history"
+			execCommand res, "git status"
 			res.send "Deploy of #{project} at #{branch} is done!"
 
 
