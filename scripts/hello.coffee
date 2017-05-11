@@ -10,9 +10,6 @@ execCommand = (res, command, callback) ->
 		if(stderr != null)
 			res.send stderr	
 
-		res.send "Calling callback!"
-		callback 'anything'
-
 module.exports = (robot) -> 
 	robot.hear /izotx/i, (res) ->
 	    res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
@@ -24,8 +21,9 @@ module.exports = (robot) ->
 		if project is 'nextexithistory'
 			res.send "Deploying #{project} at #{branch}..."
 			
-			execCommand res, "ls -a", (anything) -> 
-				res.send "Deploy of #{project} at #{branch} is done! #{anything}"
+			execCommand res, "cd ~/izotx-next-exit-history", () -> 
+				execCommand res, "git checkout #{branch}", () -> 
+					res.send "Deploy of #{project} at #{branch} is done!"
 
 
 		else
