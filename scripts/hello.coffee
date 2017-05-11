@@ -10,8 +10,6 @@ execCommand = (res, command) ->
 		if(stderr != null)
 			res.send stderr	
 
-		res.send "Deploy of #{project} at #{branch} is done!"
-
 module.exports = (robot) -> 
 	robot.hear /izotx/i, (res) ->
 	    res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
@@ -24,6 +22,7 @@ module.exports = (robot) ->
 			res.send "Deploying #{project} at #{branch}..."
 			
 			execCommand res, "cd ~/izotx-next-exit-history; git checkout #{branch}"
+			res.send "Deploy of #{project} at #{branch} is done!"
 
 
 		else
