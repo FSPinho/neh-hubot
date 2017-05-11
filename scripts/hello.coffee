@@ -11,7 +11,7 @@ execCommand = (res, command, callback) ->
 			res.send stderr	
 
 		callback()
-		
+
 
 module.exports = (robot) -> 
 	robot.hear /izotx/i, (res) ->
@@ -19,7 +19,7 @@ module.exports = (robot) ->
 
 	robot.respond /deploy project (.*) at branch (.*)/i, (res) ->
 		project = res.match[1] 
-		branch = res.match[1] 
+		branch = res.match[2] 
 
 		if project is 'nextexithistory'
 			res.send "Deploying #{project} at #{branch}..."
