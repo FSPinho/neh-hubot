@@ -21,7 +21,7 @@ module.exports = (robot) ->
 		if project is 'nextexithistory'
 			res.send "Deploying #{project} at #{branch}..."
 			
-			execCommand res, "cd ~/izotx-next-exit-history; git checkout #{branch}"
+			execCommand res, "cd ~/izotx-next-exit-history"
 			res.send "Deploy of #{project} at #{branch} is done!"
 
 
