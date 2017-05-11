@@ -23,15 +23,14 @@ module.exports = (robot) ->
 			res.send "Deploying #{project} at #{branch}..."
 			
 			execCommand res, "cd ~/izotx-next-exit-history", () -> 
-				execCommand res, "ls", () -> 
-					execCommand res, "git checkout #{branch}", () -> 
-						execCommand res, "git pull", () -> 
-							execCommand res, "source venvs/bin/activate", () -> 
-								execCommand res, "python manage.py collectstatic", () -> 
-									execCommand res, "cd landing/static/landing", () -> 
-										execCommand res, "grunt", () -> 
-											execCommand res, "sudo service apache2 restart", () -> 
-												res.send "Deploy of #{project} at #{branch} is done!"
+				execCommand res, "cd ~/izotx-next-exit-history ; git checkout #{branch}", () -> 
+					execCommand res, "cd ~/izotx-next-exit-history ; git pull", () -> 
+						execCommand res, "cd ~/izotx-next-exit-history ; source venvs/bin/activate", () -> 
+							execCommand res, "cd ~/izotx-next-exit-history ; python manage.py collectstatic", () -> 
+								execCommand res, "cd ~/izotx-next-exit-history/landing/static/landing", () -> 
+									execCommand res, "cd ~/izotx-next-exit-history/landing/static/landing ; grunt", () -> 
+										execCommand res, "sudo service apache2 restart", () -> 
+											res.send "Deploy of #{project} at #{branch} is done!"
 					
 
 
