@@ -7,8 +7,6 @@ module.exports = (robot) ->
 		branch = res.match[1] 
 
 		res.send "Deploying #{project} at #{branch}..."
-
-		@exec = require('child_process').exec
 		
 		command = "ls -a"
 
