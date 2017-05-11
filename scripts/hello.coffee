@@ -2,24 +2,28 @@ execCommand = (res, command, callback) ->
 	res.send "Executting #{command}..."
 	@exec = require('child_process').exec
 	@exec command, (error, stdout, stderr) ->
-		if(error != null)
+		if error
 			res.send error
 
-		if(stdout != null)
+		if stdout
 			res.send stdout
 
-		if(stderr != null)
+		if stderr
 			res.send stderr	
 
-		callback()
+		if callback
+			callback()
 
-izotx = (res, anything) ->
+izotx = (res, anything, next) ->
 	res.send "You say #{anything}"
+	if next
+		next()
 
 
 module.exports = (robot) -> 
 	robot.hear /izotx/i, (res) ->
-	    izotx res, "Felipe"
+	    izotx res, "Felipe", () -> 
+	    	izotx res, "Felipe 2"
 
 	robot.respond /deploy project (.*) at branch (.*)/i, (res) ->
 		project = res.match[1] 
