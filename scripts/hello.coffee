@@ -13,10 +13,13 @@ execCommand = (res, command, callback) ->
 
 		callback()
 
+izotx = (res, anything) ->
+	res.send "You say #{anything}"
+
 
 module.exports = (robot) -> 
 	robot.hear /izotx/i, (res) ->
-	    res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
+	    izotx "Felipe"
 
 	robot.respond /deploy project (.*) at branch (.*)/i, (res) ->
 		project = res.match[1] 
