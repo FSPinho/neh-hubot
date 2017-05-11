@@ -11,7 +11,6 @@ module.exports = (robot) ->
 			
 			@exec = require('child_process').exec
 			command = "cd ~/izotx-next-exit-history; git checkout #{branch}"
-			
 			@exec command, (error, stdout, stderr) ->
 				if(error != null)
 					res.send error
@@ -22,8 +21,8 @@ module.exports = (robot) ->
 				if(stderr != null)
 					res.send stderr
 
+				@exec = require('child_process').exec
 				command2 = "cd ~/izotx-next-exit-history/landing/static/landing ; grunt"
-			
 				@exec command2, (error, stdout, stderr) ->
 					if(error != null)
 						res.send error
@@ -34,8 +33,8 @@ module.exports = (robot) ->
 					if(stderr != null)
 						res.send stderr
 
+					@exec = require('child_process').exec
 					command3 = "cd ~/izotx-next-exit-history ; source venvs/bin/activate ; python manage.py collectstatic ; sudo service apache2 restart"
-			
 					@exec command3, (error, stdout, stderr) ->
 						if(error != null)
 							res.send error
